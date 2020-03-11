@@ -55,7 +55,7 @@ JQSpeedTest = function(options) {
 		testImageUrl: 'image',
 		// Test Imagee Size (Bytes) (DEFAULT IMAGE IS 4796123=4.8Mb)
 		
-		//testImageSize: 4796123,
+		//testImageSize: 11000000,
 		testImageSize: 13596381 ,
 
 		// Test Upload Size (Bytes) (DEFAULT IS 2500000=2.5Mb)
@@ -154,6 +154,8 @@ JQSpeedTest = function(options) {
 				"Access-Control-Allow-Headers": "*",
 				"accept": "application/json",
 			},
+			//url : "https://drive.google.com/u/0/uc?id=1fTUyZEplIzR0xilIQSvOI4hfY4qzaiPP&export=download",
+			//url : "https://3ddiagnostix.com/newcp/www.dir.txt?_=1583750818610" ,
 			url : "https://speedtestapis.herokuapp.com/downloadData",
 			//url: settings.testImageUrl,
 			//url : "https://images.pexels.com/photos/235986/pexels-photo-235986.jpeg?cs=srgb&dl=abandoned-ancient-antique-architecture-235986.jpg&fm=jpg&w=6000",
@@ -163,7 +165,8 @@ JQSpeedTest = function(options) {
 			cache: false,
 			retries       : 3,     //       <-------- Optional
 			retryInterval : 2000,   //       <-------- Optional
-			success: function(){
+			success: function(response){
+              console.log("response.length="+response.length)
 				var receiveDate = (new Date()).getTime();
 				var duration = (receiveDate - sendDate) / 1000;
 				var bitsLoaded = settings.testImageSize * 8 ;
